@@ -1,9 +1,8 @@
 import os
 
+import dotenv
 import numpy as np
 from PIL import Image
-import dotenv
-
 
 dotenv.load_dotenv()
 
