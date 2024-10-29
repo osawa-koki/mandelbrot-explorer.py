@@ -1,7 +1,6 @@
 import numpy as np
 from PIL import Image
 
-
 width, height = 800, 800
 max_iter = 256
 num_frames = 200
@@ -14,7 +13,7 @@ y_range = 0.015
 frames = []
 
 for i in range(num_frames):
-    zoom_multiplier = zoom_factor ** i
+    zoom_multiplier = zoom_factor**i
     x_min = x_center - x_range / (2 * zoom_multiplier)
     x_max = x_center + x_range / (2 * zoom_multiplier)
     y_min = y_center - y_range / (2 * zoom_multiplier)
@@ -29,7 +28,7 @@ for i in range(num_frames):
 
     for j in range(max_iter):
         mask = np.abs(Z) < 2
-        Z[mask] = Z[mask]**2 + C[mask]
+        Z[mask] = Z[mask] ** 2 + C[mask]
         output[mask] = j
 
     red = (output * 8 % 256).astype(np.uint8)
@@ -41,9 +40,5 @@ for i in range(num_frames):
     frames.append(img)
 
 frames[0].save(
-    "mandelbrot.gif",
-    save_all=True,
-    append_images=frames[1:],
-    duration=50,
-    loop=0
+    "mandelbrot.gif", save_all=True, append_images=frames[1:], duration=50, loop=0
 )
