@@ -1,14 +1,50 @@
+import os
+
+import dotenv
 import numpy as np
 from PIL import Image
 
-width, height = 800, 800
-max_iter = 256
-num_frames = 200
-x_center, y_center = -0.743643887037151, 0.13182590420533
-zoom_factor = 1.05
+dotenv.load_dotenv()
 
-x_range = 0.015
-y_range = 0.015
+
+width_raw = os.getenv("WIDTH")
+height_raw = os.getenv("HEIGHT")
+max_iter_raw = os.getenv("MAX_ITER")
+num_frames_raw = os.getenv("NUM_FRAMES")
+x_center_raw = os.getenv("X_CENTER")
+y_center_raw = os.getenv("Y_CENTER")
+zoom_factor_raw = os.getenv("ZOOM_FACTOR")
+x_range_raw = os.getenv("X_RANGE")
+y_range_raw = os.getenv("Y_RANGE")
+
+if width_raw is None:
+    raise ValueError("WIDTH is not set")
+if height_raw is None:
+    raise ValueError("HEIGHT is not set")
+if max_iter_raw is None:
+    raise ValueError("MAX_ITER is not set")
+if num_frames_raw is None:
+    raise ValueError("NUM_FRAMES is not set")
+if x_center_raw is None:
+    raise ValueError("X_CENTER is not set")
+if y_center_raw is None:
+    raise ValueError("Y_CENTER is not set")
+if zoom_factor_raw is None:
+    raise ValueError("ZOOM_FACTOR is not set")
+if x_range_raw is None:
+    raise ValueError("X_RANGE is not set")
+if y_range_raw is None:
+    raise ValueError("Y_RANGE is not set")
+
+width = int(width_raw)
+height = int(height_raw)
+max_iter = int(max_iter_raw)
+num_frames = int(num_frames_raw)
+x_center = float(x_center_raw)
+y_center = float(y_center_raw)
+zoom_factor = float(zoom_factor_raw)
+x_range = float(x_range_raw)
+y_range = float(y_range_raw)
 
 frames = []
 
