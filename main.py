@@ -40,5 +40,9 @@ for i in range(num_frames):
     frames.append(img)
 
 frames[0].save(
-    "mandelbrot.gif", save_all=True, append_images=frames[1:], duration=50, loop=0
+    "mandelbrot.gif",
+    save_all=True,
+    append_images=frames[1:],
+    duration=50,
+    loop=0,
 )
