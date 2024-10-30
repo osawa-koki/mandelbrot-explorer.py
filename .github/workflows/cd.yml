@@ -22,6 +22,8 @@ jobs:
         python-version: 3.13
     - name: Install dependencies
       run: pip install -r ./requirements.txt
+    - name: Create dotenv
+      run: echo '${{ secrets.DOTENV }}' > ./.env
     - name: Execute
       run: python ./main.py
     - name: Move to public
